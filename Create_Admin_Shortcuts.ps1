@@ -194,4 +194,4 @@ Copy-item -path 'C:\Admin\shortcuts\_Logoff.lnk' -Destination "$DesktopPath\_Log
 Copy-item -path 'C:\Admin\shortcuts\CMD as Admin.lnk' -Destination "$DesktopPath\CMD As Admin.lnk"
 Copy-item -path 'C:\Admin\shortcuts\Powershell ISE as Admin.lnk' -Destination "$DesktopPath\Powershell ISE As Admin.lnk"
 
-# PS2EXE -inputFile '\\srv12r2-dc\new tech\Project Management\A_UsefulStuff\Powershell\create_Shortcuts.ps1' -outputfile '\\srv12r2-dc\new tech\Project Management\A_UsefulStuff\Powershell\Create_Admin_Shortcuts.exe' -iconFile '\\srv12r2-dc\new tech\Project Management\A_UsefulStuff\Powershell\admin-logo-icon-33.ico'
+# PS2EXE -inputFile '\\PathToFile\create_Admin_Shortcuts.ps1' -outputfile '\\PathToOutput\BK_Create_Admin_Shortcuts.exe' -iconFile '\\PathToIconFile\MyCoolIcon.ico'
