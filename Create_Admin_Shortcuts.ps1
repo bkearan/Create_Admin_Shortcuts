@@ -44,6 +44,11 @@ $Shortcuts = @(
     [pscustomobject]@{ExePath = $env:windir + '\System32\fsmgmt.msc'; Args = ""; LinkName = 'File Share Management'; IconPath = $env:windir + '\System32\fsmgmt.msc,0'; Admin = $false}
     [pscustomobject]@{ExePath = $env:windir + '\System32\certmgr.msc'; Args = ""; LinkName = 'Certificates - User'; IconPath = $env:windir + '\System32\certmgr.msc,0'; Admin = $false}
     [pscustomobject]@{ExePath = $env:windir + '\System32\control.exe'; Args = ""; LinkName = 'Control Panel'; IconPath = $env:windir + '\System32\control.exe,0'; Admin = $false}
+    [pscustomobject]@{ExePath = $env:windir + '\explorer.exe'; Args = "shell:::{D9EF8727-CAC2-4e60-809E-86F80A666C91}"; LinkName = 'CPanel - Bitlocker'; IconPath = $env:windir + '\System32\fvecpl.dll,0'; Admin = $false}
+    [pscustomobject]@{ExePath = $env:windir + '\explorer.exe'; Args = "shell:::{7b81be6a-ce2b-4676-a29e-eb907a5126c5}"; LinkName = 'CPanel - Programs'; IconPath = $env:windir + '\System32\imageres.dll, -31'; Admin = $false}
+    [pscustomobject]@{ExePath = $env:windir + '\explorer.exe'; Args = "shell:::{2559a1f0-21d7-11d4-bdaf-00c04f60b9f0}"; LinkName = 'CPanel - Mail'; IconPath = $env:windir + '\System32\imageres.dll, -100'; Admin = $false}
+    [pscustomobject]@{ExePath = $env:windir + '\explorer.exe'; Args = "shell:::{6DFD7C5C-2451-11d3-A299-00C04F8EF6AF}"; LinkName = 'CPanel - File Explorer Options'; IconPath = $env:windir + '\System32\imageres.dll, -106'; Admin = $false}
+    [pscustomobject]@{ExePath = $env:windir + '\explorer.exe'; Args = "shell:::{ED7BA470-8E54-465E-825C-99712043E01C}"; LinkName = 'CPanel - Sys Config'; IconPath = $env:windir + '\System32\imageres.dll, -24'; Admin = $false}
     [pscustomobject]@{ExePath = 'ms-settings:defaultapps'; Args = ""; LinkName = 'S - Default Apps'; IconPath = $env:windir + '\System32\SHELL32.dll,90'; Admin = $false}
     [pscustomobject]@{ExePath = 'ms-settings:powersleep'; Args = ""; LinkName = 'S - Power & Sleep'; IconPath = $env:windir + '\System32\SHELL32.dll,90'; Admin = $false}
     [pscustomobject]@{ExePath = 'ms-settings:remotedesktop'; Args = ""; LinkName = 'S - RemoteDesktop'; IconPath = $env:windir + '\System32\SHELL32.dll,90'; Admin = $false}
@@ -69,8 +74,11 @@ $Shortcuts = @(
     [pscustomobject]@{ExePath = 'https://www.7-zip.org/download.html'; Args = ""; LinkName = 'Web - 7-Zip'; IconPath = $env:windir + '\System32\SHELL32.dll,92'; Admin = $false}
     [pscustomobject]@{ExePath = 'https://www.ccleaner.com/ccleaner/builds'; Args = ""; LinkName = 'Web - CCleaner Portable '; IconPath = $env:windir + '\System32\SHELL32.dll,92'; Admin = $false}
     [pscustomobject]@{ExePath = 'https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html'; Args = ""; LinkName = 'Web - Putty'; IconPath = $env:windir + '\System32\SHELL32.dll,92'; Admin = $false}
+    [pscustomobject]@{ExePath = 'https://sc.computerstlouis.com/'; Args = ""; LinkName = 'CSTL Control'; IconPath = $env:windir + '\System32\SHELL32.dll,92'; Admin = $false}
     [pscustomobject]@{ExePath = 'https://www.advanced-ip-scanner.com/download/'; Args = ""; LinkName = 'Web - Advanced IP Scanner'; IconPath = $env:windir + '\System32\SHELL32.dll,92'; Admin = $false}
-    
+    [pscustomobject]@{ExePath = 'https://monitoring.computerstlouis.com/WCC2/Home/Login?'; Args = ""; LinkName = 'CSTL Automate'; IconPath = $env:windir + '\System32\SHELL32.dll,92'; Admin = $false}
+    [pscustomobject]@{ExePath = 'https://support.computerstlouis.com/'; Args = ""; LinkName = 'CSTL Manage'; IconPath = $env:windir + '\System32\SHELL32.dll,92'; Admin = $false}
+    [pscustomobject]@{ExePath = 'https://computerstlouis.speedtestcustom.com/'; Args = ""; LinkName = 'CSTL SpeedTest'; IconPath = $env:windir + '\System32\SHELL32.dll,92'; Admin = $false}
 )
 
 # C:\WINDOWS\System32\netcenter.dll
@@ -152,6 +160,7 @@ $BatFiles = @(
     [pscustomobject]@{Content = 'netdom query fsmo' + $newline + 'pause'; Name = 'Show FSMO Roles'; IconPath = $env:windir + '\system32\SHELL32.dll,210'; Admin = $false} # Show FSMO Roles
     [pscustomobject]@{Content = 'powershell Move-ADDirectoryServerOperationMasterRole -Identity $env:computername -OperationMasterRole 0,1,2,3,4' + $newline + 'pause'; Name = 'Move FSMO Here'; IconPath = $env:windir + '\system32\SHELL32.dll,161'; Admin = $true} # Move FSMO Roles to this Server
     [pscustomobject]@{Content = 'w32tm /config /manualpeerlist:"1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org" /syncfromflags:manual /reliable:yes /update' + $newline + 'w32tm /config /reliable:yes' + $newline + 'net stop w32time && net start w32time' + $newline + 'pause'; Name = 'DC - Make Reliable Time Server'; IconPath = $env:windir + '\system32\SHELL32.dll,161'; Admin = $true} # Make Reliable Time Server
+    [pscustomobject]@{Content = 'sconfig' + $newline + 'pause'; Name = 'Start Server Config'; IconPath = $env:windir + '\system32\SHELL32.dll,160'; Admin = $true} # Server Config
     )
 $batPath = Join-Path $pathForShortcuts -ChildPath "\batchfiles"
 If(-Not(Test-Path -Path $batPath)){
